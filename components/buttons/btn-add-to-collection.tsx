@@ -1,0 +1,159 @@
+'use client';
+
+import { FaPlus } from 'react-icons/fa';
+import { TiTick } from 'react-icons/ti';
+import { useDispatch, useSelector } from 'react-redux';
+import { useAuthModel } from '../context/auth-modal-context';
+import DetailMovie from 'types/detail-movie';
+import { doc, getDoc, setDoc, updateDoc, arrayUnion } from 'firebase/firestore';
+import { db } from '../../lib/firebase'; // Đường dẫn đến tệp firebase của bạn
+import { toast } from 'react-toastify';
+import { useEffect, useState } from 'react';
+import LoadingSpinerBtn from '../loading/loading-spiner-btn';
+import MovieCollection from 'types/movie-collection';
+import {
+  addToCollection,
+  removeFromCollection,
+} from '../../redux/slices/collection-slice';
+import { useTranslations } from 'next-intl';
+import { analytics } from 'lib/posthog/events';
+
+interface BtnAddToCollectionProps {
+  variant: 'primary' | 'secondary'; // Prop để điều chỉnh kiểu dáng
+  detailMovie: DetailMovie;
+}
+
+export default function BtnAddToCollection({ variant, detailMovie }: BtnAddToCollectionProps) {
+  const tToast = useTranslations('toasts');
+  const tAccount = useTranslations('accountMenu');
+  const user = useSelector((state: any) => state.auth.user);
+  const dispatch = useDispatch();
+  const { openAuthModal } = useAuthModel();
+  const [isHandling, setIsHandling] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isExistedInCollection, setIsExistedInCollection] = useState<boolean>(false);
+
+  const toogleMovieToUserCollection = async () => {
+    if (!user) {
+      openAuthModal();
+      return;
+    }
+
+    if (isExistedInCollection) {
+      await removeMovieToUserCollection();
+    } else {
+      await addMovieToUserCollection();
+    }
+  };
+
+  const addMovieToUserCollection = async () => {
+    setIsHandling(true);
+
+    const movie: MovieCollection = {
+      id: detailMovie.movie._id,
+      slug: detailMovie.movie.slug,
+      thumb_url: detailMovie.movie.thumb_url,
+      name: detailMovie.movie.name,
+      origin_name: detailMovie.movie.origin_name,
+      lang: detailMovie.movie.lang,
+      quality: detailMovie.movie.quality,
+    };
+
+    try {
+      const userMoviesRef = doc(db, 'userMovies', user.id);
+      const docSnapshot = await getDoc(userMoviesRef);
+
+      if (docSnapshot.exists()) {
+        await updateDoc(userMoviesRef, {
+          movies: arrayUnion(movie),
+        });
+      } else {
+        await setDoc(userMoviesRef, {
+          movies: [movie],
+        });
+      }
+
+      toast.success(tToast('addedToCollectionLong'));
+      setIsExistedInCollection(true);
+      // Keep Redux cache in sync so card overlay buttons re-render correctly
+      dispatch(addToCollection(movie));
+      analytics.collectionAdded(detailMovie.movie._id);
+    } catch (error: any) {
+      console.log(error.message);
+    } finally {
+      setIsHandling(false);
+    }
+  };
+
+  const removeMovieToUserCollection = async () => {
+    setIsHandling(true);
+
+    try {
+      const userMoviesRef = doc(db, 'userMovies', user.id);
+      const docSnapshot = await getDoc(userMoviesRef);
+
+      if (docSnapshot.exists()) {
+        const existingMovies = docSnapshot.data().movies || [];
+
+        const updatedMovies = existingMovies.filter((m: any) => m.id !== detailMovie.movie._id);
+
+        await updateDoc(userMoviesRef, {
+          movies: updatedMovies,
+        });
+
+        toast.success(tToast('removedFromCollectionLong'));
+        setIsExistedInCollection(false);
+        // Keep Redux cache in sync
+        dispatch(removeFromCollection(detailMovie.movie._id));
+        analytics.collectionRemoved(detailMovie.movie._id);
+      }
+    } catch (error: any) {
+      console.log(error.message);
+    } finally {
+      setIsHandling(false);
+    }
+  };
+
+  useEffect(() => {
+    if (!user) {
+      setIsExistedInCollection(false);
+      setIsLoading(false);
+      return;
+    }
+
+    const checkIfMovieExists = async () => {
+      const userMoviesRef = doc(db, 'userMovies', user.id);
+      const docSnapshot = await getDoc(userMoviesRef);
+
+      if (docSnapshot.exists()) {
+        const existingMovies = docSnapshot.data().movies || [];
+        const movieExists = existingMovies.some((m: any) => m.id === detailMovie.movie._id);
+        setIsExistedInCollection(movieExists);
+      }
+      setIsLoading(false);
+    };
+
+    checkIfMovieExists();
+  }, [user, detailMovie.movie._id]);
+
+  return (
+    <button
+      className={
+        variant === 'primary'
+          ? 'flex items-center space-x-2 bg-[#717171] py-3 px-5 rounded-md text-white transition duration-200 ease-in-out hover:bg-[#5a5a5a]' // Thay đổi màu nền khi hover
+          : 'flex items-center bg-white px-3 py-2 rounded-md gap-x-2 text-black font-semibold transition duration-200 ease-in-out hover:bg-gray-200' // Thay đổi màu nền khi hover
+      }
+      onClick={toogleMovieToUserCollection}
+      disabled={isHandling || isLoading}
+    >
+      {isLoading || isHandling ? (
+        <LoadingSpinerBtn />
+      ) : (
+        <>
+          {isExistedInCollection ? <TiTick size={18} /> : <FaPlus size={18} />}
+          <span className="block leading-4 font-semibold">{tAccount('collection')}</span>
+        </>
+      )}
+    </button>
+  );
+}

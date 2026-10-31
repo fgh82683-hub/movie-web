@@ -1,0 +1,186 @@
+{
+  "updated_at": "2026-10-26T06:17:38.291Z",
+  "interval_days": 7,
+  "movies": [
+    {
+      "slug": "nguoi-thay-y-duc-phan-1",
+      "thumb_url": "https://phimimg.com/upload/vod/20231004-1/aedaed06dd0202136691549aa2bb08ae.jpg",
+      "year": 2016,
+      "tmdb_id": "68398",
+      "tmdb_type": "tv",
+      "movie_id": "55b1927fdafef39c48e5b73b5d61ea60",
+      "views": 2,
+      "plays": 12,
+      "completions": 4,
+      "trending_score": 0.867,
+      "title": {
+        "vi": "Người Thầy Y Đức (Phần 1)",
+        "en": "Dr. Romantic (Season 1)"
+      },
+      "tmdb_rating": 8.1,
+      "poster_url": "https://image.tmdb.org/t/p/w500/9fbRJgZ2zDTnSUId1bOwsllHNr7.jpg"
+    },
+    {
+      "slug": "trang-trai-dutton",
+      "thumb_url": "https://phimimg.com/upload/vod/20260604-1/c714d7ad21f9fea3380edbfba93b72e8.jpg",
+      "year": 2026,
+      "tmdb_id": "299167",
+      "tmdb_type": "tv",
+      "movie_id": "085fc1406248327158619fb1326434cc",
+      "views": 1,
+      "plays": 12,
+      "completions": 0,
+      "trending_score": 0.433,
+      "title": {
+        "vi": "Trang Trại Dutton",
+        "en": "Dutton Ranch"
+      },
+      "tmdb_rating": 9.134,
+      "poster_url": "https://image.tmdb.org/t/p/w500/xsiecCxd8lkcAluw0wWwbW5CwSv.jpg"
+    },
+    {
+      "slug": "yeu-la-mu-quang-ha-lan",
+      "thumb_url": "https://phimimg.com/uploads/movies/20261021/yeu-la-mu-quang-ha-lan-poster.webp",
+      "year": 2026,
+      "tmdb_id": "290750",
+      "tmdb_type": "tv",
+      "movie_id": "e591c1f05d9a8acca48d6b8182711e61",
+      "views": 3,
+      "plays": 7,
+      "completions": 1,
+      "trending_score": 0.433,
+      "title": {
+        "vi": "Yêu Là Mù Quáng: Hà Lan",
+        "en": "Love Is Blind: Netherlands"
+      },
+      "tmdb_rating": 6,
+      "poster_url": "https://phimimg.com/uploads/movies/20261021/yeu-la-mu-quang-ha-lan-poster.webp"
+    },
+    {
+      "slug": "vision-quest",
+      "thumb_url": "https://phimimg.com/uploads/movies/20261017/vision-quest-poster.webp",
+      "year": 2026,
+      "tmdb_id": "213375",
+      "tmdb_type": "tv",
+      "movie_id": "d890c8df5c278c4a35ca75c78e62f9e0",
+      "views": 6,
+      "plays": 1,
+      "completions": 0,
+      "trending_score": 0.233,
+      "title": {
+        "vi": "Vision Quest",
+        "en": "VisionQuest"
+      },
+      "tmdb_rating": 8.8,
+      "poster_url": "https://image.tmdb.org/t/p/w500/xK27l5uwaVyZSlENWnmLlWwDQNS.jpg"
+    },
+    {
+      "slug": null,
+      "thumb_url": null,
+      "year": null,
+      "tmdb_id": null,
+      "tmdb_type": null,
+      "movie_id": "f512bcc142683f9185ea27c41855ed64",
+      "views": 0,
+      "plays": 4,
+      "completions": 1,
+      "trending_score": 0.233,
+      "title": {
+        "vi": null,
+        "en": null
+      },
+      "tmdb_rating": null,
+      "poster_url": null
+    },
+    {
+      "slug": "f1-phim-dien-anh",
+      "thumb_url": "https://phimimg.com/upload/vod/20250821-1/0f6921e399320d2f405c0e56efa42af5.jpg",
+      "year": 2025,
+      "tmdb_id": "911430",
+      "tmdb_type": "movie",
+      "movie_id": "cc65a7dd40f9de3463468921203d2177",
+      "views": 5,
+      "plays": 1,
+      "completions": 0,
+      "trending_score": 0.2,
+      "title": {
+        "vi": "F1 Phim Điện Ảnh",
+        "en": "F1"
+      },
+      "tmdb_rating": 7.831,
+      "poster_url": "https://image.tmdb.org/t/p/w500/9PXZIUsSDh4alB80jheWX4fhZmy.jpg"
+    },
+    {
+      "slug": "cuc-quan-ly-ky-uc",
+      "thumb_url": "https://phimimg.com/uploads/movies/20261004/cuc-quan-ly-ky-uc-poster.webp",
+      "year": 2026,
+      "tmdb_id": "280564",
+      "tmdb_type": "tv",
+      "movie_id": "e7ec8bad741ed94bf92b26ac00cd8f2a",
+      "views": 2,
+      "plays": 4,
+      "completions": 0,
+      "trending_score": 0.2,
+      "title": {
+        "vi": "Cục Quản Lý Ký Ức",
+        "en": "False Memory"
+      },
+      "tmdb_rating": 7.9,
+      "poster_url": "https://image.tmdb.org/t/p/w500/sSvgBIvcwGoWmbdlbpZI5kHBtVv.jpg"
+    },
+    {
+      "slug": "nu-luat-su-ky-la-minami",
+      "thumb_url": "https://phimimg.com/uploads/movies/20261020/nu-luat-su-ky-la-minami-poster.webp",
+      "year": 2026,
+      "tmdb_id": "332713",
+      "tmdb_type": "tv",
+      "movie_id": "a95f918eec4c76552a532fb6c5e2024f",
+      "views": 3,
+      "plays": 2,
+      "completions": 0,
+      "trending_score": 0.167,
+      "title": {
+        "vi": "Nữ Luật Sư Kỳ Lạ Minami",
+        "en": "Extraordinary Attorney Minami"
+      },
+      "tmdb_rating": 6,
+      "poster_url": "https://image.tmdb.org/t/p/w500/xnNu56T04JDZRBIDxclpr83s7K.jpg"
+    },
+    {
+      "slug": "gia-thuyet-tinh-yeu",
+      "thumb_url": "https://phimimg.com/uploads/movies/20261019/gia-thuyet-tinh-yeu-poster.webp",
+      "year": 2026,
+      "tmdb_id": "1032863",
+      "tmdb_type": "movie",
+      "movie_id": "de56e94ad19a737206d071b93cd64be5",
+      "views": 3,
+      "plays": 2,
+      "completions": 0,
+      "trending_score": 0.167,
+      "title": {
+        "vi": "Giả Thuyết Tình Yêu",
+        "en": "The Love Hypothesis"
+      },
+      "tmdb_rating": 7.987,
+      "poster_url": "https://image.tmdb.org/t/p/w500/vfZxVHextAGC70zrNhS8lsROqP1.jpg"
+    },
+    {
+      "slug": "bac-thay-tinh-duc-phan-2",
+      "thumb_url": "https://phimimg.com/upload/vod/20251116-1/a3f13be4adcc8cf8c9762e1e0026c2a2.jpg",
+      "year": 2014,
+      "tmdb_id": "58937",
+      "tmdb_type": "tv",
+      "movie_id": "35fe071cd4426fe8a90666101fff1bf0",
+      "views": 3,
+      "plays": 1,
+      "completions": 0,
+      "trending_score": 0.133,
+      "title": {
+        "vi": "Bậc Thầy Tình Dục (Phần 2)",
+        "en": "Masters of Sex (Season 2)"
+      },
+      "tmdb_rating": 7.09,
+      "poster_url": "https://image.tmdb.org/t/p/w500/e5CKTAqZM43PvqRHoGMKvHXECyT.jpg"
+    }
+  ]
+}
